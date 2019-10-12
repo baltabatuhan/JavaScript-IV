@@ -5,6 +5,9 @@ class Person {
     this.age = att.age;
     this.location = att.location;
   }
+  speak() {
+    return `Hello my name is ${this.name}, I am from ${this.location}`;
+  }
 }
 
 class Instructor extends Person {
@@ -18,8 +21,8 @@ class Instructor extends Person {
   demo(subject) {
     return `Today we are learning about ${subject}.`;
   }
-  grade(subject) {
-    return `{student.name} receives a perfect score on ${subject}`;
+  grade(student, subject) {
+    return `${student.name} receives a perfect score on ${subject}`;
   }
 }
 
@@ -29,15 +32,16 @@ class Student extends Person {
     this.previousBackground = StuAtt.previousBackground;
     this.className = StuAtt.className;
     this.favSubjects = StuAtt.favSubjects;
+    this.grade = StuAtt.grade;
   }
   listsSubject() {
     return `${this.favSubjects}`;
   }
   PRAassignment(subject) {
-    return `${student.name} has submitted a PR for ${subject}.`;
+    return `${this.name} has submitted a PR for ${subject}.`;
   }
   sprintChallenge(subject) {
-    return `${student.name}has begun sprint challenge on ${subject}`;
+    return `${this.name}has begun sprint challenge on ${subject}`;
   }
 }
 
@@ -55,7 +59,7 @@ class TeamLead extends Instructor {
   }
 }
 
-const instructor = new Instructor({
+const Zaza = new Instructor({
   name: "Zaza",
   location: "Los Angeles",
   age: 26,
@@ -64,7 +68,7 @@ const instructor = new Instructor({
   catchPhrase: "Voldemort!!!"
 });
 
-const teamLead = new TeamLead({
+const Ulash = new TeamLead({
   name: "Ulash",
   location: "Antalya",
   age: 30,
@@ -72,7 +76,7 @@ const teamLead = new TeamLead({
   favInstructor: "Batuhan"
 });
 
-const student = new Student({
+const Batuhan = new Student({
   name: "Batuhan",
   location: "Culver City",
   age: 26,
@@ -81,5 +85,12 @@ const student = new Student({
   favSubjects: ["css", "java", "phyton"]
 });
 
-console.log(instructor.demo("JavaScript"));
-console.log(instructor.grade("JavaScript"));
+console.log(Zaza.demo("CSS"));
+console.log(Zaza.grade(Batuhan, "JavaScript"));
+
+console.log(Batuhan.listsSubject());
+console.log(Batuhan.PRAassignment("Redux"));
+console.log(Batuhan.sprintChallenge("HTML"));
+
+console.log(Ulash.standUp("webpt11_Ulash"));
+console.log(Ulash.debugsCode(Batuhan, "Java"));
